@@ -4,7 +4,7 @@ SnapBook is an Android app that beautifully blends vintage photography with digi
 
 
 A glimpse into the app ✨  
-![Main Page](./main%page.jpg)
+![Main Page](./main page.jpg)
 
 ---
 

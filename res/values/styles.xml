@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- Title Styles -->
+    <style name="TitleText">
+        <item name="android:textSize">48sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_dark</item>
+        <item name="android:fontFamily">serif</item>
+    </style>
+
+    <style name="SubtitleText">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColor">@color/text_gold</item>
+        <item name="android:fontFamily">serif</item>
+    </style>
+
+    <!-- Button Styles -->
+    <style name="GoldButton">
+        <item name="android:background">@color/btn_gold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">15dp</item>
+    </style>
+
+    <style name="BrownButton">
+        <item name="android:background">@color/btn_brown</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">15dp</item>
+    </style>
+
+    <!-- Text Input Styles -->
+    <style name="AuthInput">
+        <item name="android:textColor">@color/text_dark</item>
+        <item name="android:textColorHint">@color/text_brown</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <!-- Gallery Item Styles -->
+    <style name="GalleryItemCard">
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+</resources>

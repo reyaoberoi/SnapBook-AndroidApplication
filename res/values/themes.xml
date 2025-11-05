@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Main theme - AppCompat compatible -->
+    <style name="Theme.SnapBook" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/btn_gold</item>
+        <item name="colorPrimaryVariant">@color/btn_brown</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/text_gold</item>
+        <item name="colorSecondaryVariant">@color/text_brown</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/btn_dark_brown</item>
+
+        <!-- Background colors -->
+        <item name="android:windowBackground">@color/bg_main</item>
+        <item name="colorSurface">@color/bg_light</item>
+        <item name="colorOnSurface">@color/text_dark</item>
+
+        <!-- Ensure AppCompat compatibility -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Fallback theme for maximum compatibility -->
+    <style name="Theme.SnapBook.Fallback" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/btn_gold</item>
+        <item name="colorPrimaryDark">@color/btn_brown</item>
+        <item name="colorAccent">@color/text_gold</item>
+        <item name="android:windowBackground">@color/bg_main</item>
+    </style>
+</resources>

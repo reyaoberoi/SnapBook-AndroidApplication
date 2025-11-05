@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="@color/bg_light">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <!-- Preview Image Container -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/bg_main"
+            android:layout_marginBottom="12dp">
+
+            <!-- Preview Image -->
+            <ImageView
+                android:id="@+id/preview_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Page Preview"
+                android:visibility="gone" />
+
+            <!-- Placeholder Icon -->
+            <TextView
+                android:id="@+id/placeholder_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="📄"
+                android:textSize="48sp"
+                android:textColor="@color/text_gold" />
+
+            <!-- Overlay with page info -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="#80000000"
+                android:padding="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/item_count"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0 photos • 0 notes"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="serif" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✨"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Page Title -->
+        <TextView
+            android:id="@+id/page_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Page Title"
+            android:textSize="18sp"
+            android:textColor="@color/text_dark"
+            android:textStyle="bold"
+            android:fontFamily="serif"
+            android:layout_marginBottom="4dp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <!-- Date -->
+        <TextView
+            android:id="@+id/page_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nov 01, 2024"
+            android:textSize="12sp"
+            android:textColor="@color/text_brown"
+            android:fontFamily="serif"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Preview Text -->
+        <TextView
+            android:id="@+id/preview_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No text added yet"
+            android:textSize="14sp"
+            android:textColor="@color/text_brown"
+            android:fontFamily="serif"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginBottom="12dp"
+            android:lineSpacingExtra="2dp" />
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/edit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✏️ Edit"
+                android:background="@color/btn_gold"
+                android:textColor="@color/white"
+                android:padding="8dp"
+                android:textSize="12sp"
+                android:layout_marginEnd="8dp"
+                android:minWidth="0dp" />
+
+            <Button
+                android:id="@+id/delete_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🗑️"
+                android:background="@color/error_red"
+                android:textColor="@color/white"
+                android:padding="8dp"
+                android:textSize="12sp"
+                android:minWidth="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

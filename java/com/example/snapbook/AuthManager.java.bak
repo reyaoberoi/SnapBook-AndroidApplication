@@ -1,0 +1,146 @@
+package com.example.snapbook;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.widget.Toast;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+
+public class AuthManager {
+
+    public static final int RC_SIGN_IN = 9001;
+
+    private final Activity activity;
+    private final FirebaseAuth auth;
+    private GoogleSignInClient googleSignInClient;
+    private AuthCallback callback;
+
+    public interface AuthCallback {
+        void onAuthSuccess(String userName, boolean isGuest);
+        void onAuthFailure(String errorMessage);
+    }
+
+    public AuthManager(Activity activity, AuthCallback callback) {
+        this.activity = activity;
+        this.auth = FirebaseAuth.getInstance();
+        this.callback = callback;
+        setupGoogleSignIn();
+    }
+
+    private void setupGoogleSignIn() {
+        try {
+            String webClientId = activity.getString(R.string.default_web_client_id);
+
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(webClientId)
+                    .requestEmail()
+                    .build();
+
+            googleSignInClient = GoogleSignIn.getClient(activity, gso);
+        } catch (Exception e) {
+            Toast.makeText(activity, "Google Sign-In not configured", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void signInWithEmail(String email, String password) {
+        if (email.isEmpty() || password.isEmpty()) {
+            callback.onAuthFailure("Please enter email and password");
+            return;
+        }
+
+        auth.signInWithEmailAndPassword(email, password)
+                .addOnSuccessListener(authResult -> {
+                    FirebaseUser user = authResult.getUser();
+                    if (user != null) {
+                        callback.onAuthSuccess(user.getEmail(), false);
+                    }
+                })
+                .addOnFailureListener(e ->
+                        callback.onAuthFailure("Sign-in failed: " + e.getMessage())
+                );
+    }
+
+    public void signUpWithEmail(String email, String password) {
+        if (email.isEmpty() || password.isEmpty()) {
+            callback.onAuthFailure("Please enter email and password");
+            return;
+        }
+
+        if (password.length() < 6) {
+            callback.onAuthFailure("Password must be at least 6 characters");
+            return;
+        }
+
+        auth.createUserWithEmailAndPassword(email, password)
+                .addOnSuccessListener(authResult -> {
+                    FirebaseUser user = authResult.getUser();
+                    if (user != null) {
+                        Toast.makeText(activity, "Account created!", Toast.LENGTH_SHORT).show();
+                        callback.onAuthSuccess(user.getEmail(), false);
+                    }
+                })
+                .addOnFailureListener(e ->
+                        callback.onAuthFailure("Sign-up failed: " + e.getMessage())
+                );
+    }
+
+    public void signInWithGoogle() {
+        if (googleSignInClient == null) {
+            callback.onAuthFailure("Google Sign-In not available");
+            return;
+        }
+        Intent signInIntent = googleSignInClient.getSignInIntent();
+        activity.startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    public void handleGoogleSignInResult(Intent data) {
+        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+        try {
+            GoogleSignInAccount account = task.getResult(ApiException.class);
+            firebaseAuthWithGoogle(account.getIdToken());
+        } catch (ApiException e) {
+            callback.onAuthFailure("Google sign in failed: " + e.getMessage());
+        }
+    }
+
+    private void firebaseAuthWithGoogle(String idToken) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(activity, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = auth.getCurrentUser();
+                        if (user != null) {
+                            String userName = user.getDisplayName();
+                            if (userName == null) userName = user.getEmail();
+                            callback.onAuthSuccess(userName, false);
+                        }
+                    } else {
+                        callback.onAuthFailure("Authentication failed");
+                    }
+                });
+    }
+
+    public void continueAsGuest() {
+        String guestName = "Guest_" + System.currentTimeMillis();
+        callback.onAuthSuccess(guestName, true);
+    }
+
+    public FirebaseUser getCurrentUser() {
+        return auth.getCurrentUser();
+    }
+
+    public void signOut() {
+        auth.signOut();
+        if (googleSignInClient != null) {
+            googleSignInClient.signOut();
+        }
+    }
+}

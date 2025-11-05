@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SnapBook</string>
+
+    <!-- Auth Screen -->
+    <string name="title_vintage">VINTAGE</string>
+    <string name="title_photobooth">PHOTO BOOTH</string>
+    <string name="btn_google_signin">Sign in with Google</string>
+    <string name="btn_email_signin">Sign In</string>
+    <string name="btn_email_signup">Create Account</string>
+    <string name="btn_guest">Continue as Guest</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+
+    <!-- Welcome Screen -->
+    <string name="btn_solo_session">Start Solo Session</string>
+    <string name="btn_collab_session">Create Collaborative Session</string>
+    <string name="label_join_session">Or join an existing session:</string>
+    <string name="hint_session_code">ABC123</string>
+    <string name="btn_join">Join</string>
+    <string name="btn_gallery">📷 View Gallery</string>
+    <string name="btn_logout">Logout</string>
+
+    <!-- Camera Screen -->
+    <string name="text_say_cheese">Say Cheese! 📸</string>
+    <string name="btn_capture">Capture Photo</string>
+    <string name="btn_back">Back</string>
+    <string name="filter_sepia">Sepia</string>
+    <string name="filter_polaroid">Polaroid</string>
+    <string name="filter_kodachrome">Kodachrome</string>
+    <string name="filter_vintage">Vintage</string>
+    <string name="filter_bw">B&amp;W</string>
+
+    <!-- Results Screen -->
+    <string name="text_photo_strip">Your Photo Strip! ✨</string>
+    <string name="btn_download">Download Strip</string>
+    <string name="btn_download_all">Download All Photos</string>
+    <string name="btn_new_session">New Session</string>
+
+    <!-- Toasts -->
+    <string name="toast_google_signin">Google Sign-In - Implement with Google Play Services</string>
+    <string name="toast_signin_failed">Sign-in failed: %s</string>
+    <string name="toast_camera_error">Camera error: %s</string>
+    <string name="toast_capture_error">Capture error: %s</string>
+    <string name="toast_photo_count" formatted="false">Photo %d/%d</string>
+    <string name="toast_session_created">Session: %s</string>
+    <string name="toast_downloaded">Photo strip downloaded!</string>
+    <string name="toast_downloading">Downloading all photos...</string>
+    <string name="content_description_photo_strip">Photo Strip</string>
+    <string name="content_description_gallery_photo">Gallery Photo</string>
+    
+    <!-- Firebase Web Client ID - This should be generated automatically by google-services.json -->
+    <string name="default_web_client_id">675613805301-kji9sfjvp8vf3d71ogifuhs41rqe23da.apps.googleusercontent.com</string>
+</resources>

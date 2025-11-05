@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main">
+
+    <!-- Auth Container -->
+    <LinearLayout
+        android:id="@+id/auth_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to SnapBook"
+            android:textSize="28sp"
+            android:textColor="@color/text_dark"
+            android:textStyle="bold"
+            android:layout_marginBottom="40dp" />
+
+        <EditText
+            android:id="@+id/email_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_email"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"
+            android:background="@color/bg_light" />
+
+        <EditText
+            android:id="@+id/password_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_password"
+            android:inputType="textPassword"
+            android:layout_marginBottom="20dp"
+            android:padding="12dp"
+            android:background="@color/bg_light" />
+
+        <Button
+            android:id="@+id/email_sign_in_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_email_signin"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/btn_gold" />
+
+        <Button
+            android:id="@+id/email_sign_up_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_email_signup"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/btn_brown" />
+
+        <Button
+            android:id="@+id/google_sign_in_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_google_signin"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/btn_red" />
+
+        <Button
+            android:id="@+id/guest_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_guest"
+            android:backgroundTint="@color/btn_gray" />
+
+    </LinearLayout>
+
+    <!-- Welcome Container -->
+    <LinearLayout
+        android:id="@+id/welcome_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📸 Ready to Capture!"
+            android:textSize="24sp"
+            android:textColor="@color/text_dark"
+            android:layout_marginBottom="40dp" />
+
+        <Button
+            android:id="@+id/start_solo_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_solo_session"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/btn_gold" />
+
+        <Button
+            android:id="@+id/create_collab_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_collab_session"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/btn_brown" />
+
+        <EditText
+            android:id="@+id/session_code_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_session_code"
+            android:layout_marginBottom="12dp"
+            android:padding="12dp"
+            android:background="@color/bg_light" />
+
+        <Button
+            android:id="@+id/join_session_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_join"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/btn_green" />
+
+        <Button
+            android:id="@+id/view_gallery_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_gallery"
+            android:backgroundTint="@color/btn_gray" />
+
+    </LinearLayout>
+
+    <!-- Camera Container -->
+    <RelativeLayout
+        android:id="@+id/camera_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/preview_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Filter buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true"
+            android:padding="8dp"
+            android:background="@color/overlay_dark">
+
+            <Button
+                android:id="@+id/filter_sepia"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="@string/filter_sepia"
+                android:textSize="12sp"
+                android:layout_margin="2dp"
+                android:backgroundTint="@color/btn_brown" />
+
+            <Button
+                android:id="@+id/filter_polaroid"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="@string/filter_polaroid"
+                android:textSize="12sp"
+                android:layout_margin="2dp"
+                android:backgroundTint="@color/btn_brown" />
+
+            <Button
+                android:id="@+id/filter_kodachrome"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="@string/filter_kodachrome"
+                android:textSize="12sp"
+                android:layout_margin="2dp"
+                android:backgroundTint="@color/btn_brown" />
+
+            <Button
+                android:id="@+id/filter_vintage"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="@string/filter_vintage"
+                android:textSize="12sp"
+                android:layout_margin="2dp"
+                android:backgroundTint="@color/btn_brown" />
+
+            <Button
+                android:id="@+id/filter_bw"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="@string/filter_bw"
+                android:textSize="12sp"
+                android:layout_margin="2dp"
+                android:backgroundTint="@color/btn_brown" />
+
+        </LinearLayout>
+
+        <!-- Current filter display -->
+        <TextView
+            android:id="@+id/current_filter_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:text="Current Filter: Sepia"
+            android:textColor="@color/white"
+            android:background="@color/overlay_dark"
+            android:padding="8dp" />
+
+        <!-- Bottom controls -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:padding="20dp"
+            android:gravity="center"
+            android:background="@color/overlay_dark">
+
+            <Button
+                android:id="@+id/back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_back"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/btn_gray" />
+
+            <Button
+                android:id="@+id/capture_btn"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:text="📸"
+                android:textSize="40sp"
+                android:backgroundTint="@color/btn_gold"
+                android:layout_marginHorizontal="20dp" />
+
+            <Button
+                android:id="@+id/camera_toggle_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔄"
+                android:textSize="20sp"
+                android:layout_marginStart="20dp"
+                android:backgroundTint="@color/btn_brown" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- Results Container -->
+    <LinearLayout
+        android:id="@+id/results_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_photo_strip"
+            android:textSize="24sp"
+            android:textColor="@color/text_dark"
+            android:layout_marginBottom="20dp" />
+
+        <ImageView
+            android:id="@+id/photo_strip_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/content_description_photo_strip"
+            android:background="@color/bg_light"
+            android:layout_marginBottom="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/download_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/btn_download"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/btn_gold" />
+
+            <Button
+                android:id="@+id/download_all_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/btn_download_all"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="@color/btn_brown" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/new_session_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_new_session"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/btn_green" />
+
+        <Button
+            android:id="@+id/home_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🏠 Home"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/btn_gray" />
+
+    </LinearLayout>
+
+</FrameLayout>

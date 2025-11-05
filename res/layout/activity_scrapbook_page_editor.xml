@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_main">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="15dp"
+        android:background="@color/bg_light"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:backgroundTint="@color/btn_brown"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:textSize="12sp"
+            android:layout_marginEnd="12dp" />
+
+        <EditText
+            android:id="@+id/title_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Page Title"
+            android:textSize="18sp"
+            android:textColor="@color/text_dark"
+            android:textStyle="bold"
+            android:fontFamily="serif"
+            android:background="@android:color/transparent"
+            android:maxLines="1" />
+
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:backgroundTint="@color/btn_gold"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Canvas Area -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <com.example.snapbook.ScrapbookCanvasView
+            android:id="@+id/canvas_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_light" />
+
+        <!-- Canvas Instructions -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Tap items to select and move them"
+            android:textSize="14sp"
+            android:textColor="@color/text_gold"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:background="#80FFFFFF"
+            android:padding="8dp"
+            android:layout_margin="20dp" />
+    </FrameLayout>
+
+    <!-- Tool Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:background="@color/bg_light"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/add_image_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Image"
+            android:backgroundTint="@color/btn_gold"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/add_text_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Text"
+            android:backgroundTint="@color/btn_brown"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/add_doodle_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Doodle"
+            android:backgroundTint="@color/btn_dark_brown"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_marginStart="8dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Instructions -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tip: Tap and drag items to move them around your page"
+        android:textSize="12sp"
+        android:textColor="@color/text_brown"
+        android:fontFamily="serif"
+        android:textAlignment="center"
+        android:padding="8dp"
+        android:background="@color/bg_main" />
+
+</LinearLayout>

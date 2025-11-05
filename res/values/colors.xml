@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Vintage PhotoBooth Colors -->
+    <!-- Background & Main Colors -->
+    <color name="bg_main">#e8dcc8</color>
+    <color name="bg_light">#faf8f5</color>
+    <color name="text_dark">#6b4423</color>
+    <color name="text_gold">#c4a667</color>
+    <color name="text_brown">#8b6914</color>
+    <color name="text_dark_brown">#3e2723</color>
+
+    <!-- Accent Colors -->
+    <color name="gold_accent">#c4a747</color>
+    <color name="gold_dark">#8b6914</color>
+    <color name="gold_light">#d4af37</color>
+
+    <!-- Button Colors -->
+    <color name="btn_gold">#c4a667</color>
+    <color name="btn_brown">#8b6914</color>
+    <color name="btn_dark_brown">#6b4423</color>
+    <color name="btn_gray">#999999</color>
+    <color name="btn_red">#c94c4c</color>
+    <color name="btn_green">#4caf50</color>
+
+    <!-- Border & Decorative -->
+    <color name="border_gold">#8b6914</color>
+    <color name="border_light_gold">#c4a747</color>
+    <color name="border_dark">#3e2723</color>
+
+    <!-- Transparency Colors -->
+    <color name="overlay_dark">#80000000</color>
+    <color name="overlay_light">#00000000</color>
+
+    <!-- UI Colors -->
+    <color name="camera_bg">#000000</color>
+    <color name="error_red">#c94c4c</color>
+    <color name="success_green">#4caf50</color>
+    <color name="warning_orange">#ff9800</color>
+
+    <!-- Sepia Filter Colors -->
+    <color name="sepia_dark">#8b6914</color>
+
+    <!-- Polaroid Filter -->
+    <color name="polaroid_bg">#e8dcc8</color>
+
+    <!-- Cyanotype Filter -->
+    <color name="cyan_blue">#4d7aa8</color>
+</resources>

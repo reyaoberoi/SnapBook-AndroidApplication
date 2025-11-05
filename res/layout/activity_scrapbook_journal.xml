@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_main">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="20dp"
+        android:background="@color/bg_light"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/home_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Home"
+            android:background="@color/btn_brown"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📔 Scrapbook Journal"
+            android:textSize="24sp"
+            android:textColor="@color/text_dark"
+            android:textStyle="bold"
+            android:fontFamily="serif" />
+    </LinearLayout>
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:background="@color/bg_light">
+
+        <Button
+            android:id="@+id/add_page_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="✨ New Page"
+            android:background="@color/btn_gold"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/import_gallery_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📱 Gallery"
+            android:background="@color/btn_brown"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/import_vintage_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📸 Vintage"
+            android:background="@color/btn_dark_brown"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_marginStart="8dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Empty State -->
+    <TextView
+        android:id="@+id/empty_scrapbook_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="📖 No pages yet!\n\nTap 'New Page' to start creating your first scrapbook page.\n\nYou can add photos from your gallery or from the Vintage Photo Booth."
+        android:textSize="18sp"
+        android:textColor="@color/text_brown"
+        android:textAlignment="center"
+        android:fontFamily="serif"
+        android:lineSpacingExtra="4dp"
+        android:padding="40dp"
+        android:visibility="gone" />
+
+    <!-- Scrapbook Pages RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/scrapbook_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:clipToPadding="false" />
+
+    <!-- Footer -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="✨ Create beautiful memories ✨"
+        android:textSize="14sp"
+        android:textColor="@color/text_gold"
+        android:textStyle="italic"
+        android:fontFamily="serif"
+        android:textAlignment="center"
+        android:padding="15dp"
+        android:background="@color/bg_light" />
+
+</LinearLayout>

@@ -1,0 +1,115 @@
+package com.example.snapbook;
+
+import android.util.Log;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CollaborationManager {
+
+    private static final String TAG = "CollaborationManager";
+    private String sessionCode;
+    private String userId;
+    private String userName;
+    private FirebaseDatabase database;
+    private CollaborationCallback callback;
+    private List<String> connectedUsers = new ArrayList<>();
+
+    public interface CollaborationCallback {
+        void onParticipantJoined(String userName);
+        void onParticipantLeft(String userName);
+        void onPhotoReceived(String userName);
+        void onSessionEnded();
+    }
+
+    public CollaborationManager(String sessionCode, String userId, String userName, CollaborationCallback callback) {
+        this.sessionCode = sessionCode;
+        this.userId = userId;
+        this.userName = userName;
+        this.callback = callback;
+        this.database = FirebaseDatabase.getInstance();
+    }
+
+    public void startSession() {
+        Log.d(TAG, "Starting collaboration session: " + sessionCode);
+
+        // Add current user to session
+        database.getReference("sessions/" + sessionCode + "/users/" + userId)
+                .setValue(userName);
+
+        // Listen for other participants
+        database.getReference("sessions/" + sessionCode + "/users")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        List<String> newUsers = new ArrayList<>();
+                        for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                            String uid = userSnapshot.getKey();
+                            if (!uid.equals(userId)) {
+                                newUsers.add((String) userSnapshot.getValue());
+                            }
+                        }
+
+                        // Detect new participants
+                        for (String user : newUsers) {
+                            if (!connectedUsers.contains(user)) {
+                                connectedUsers.add(user);
+                                if (callback != null) {
+                                    callback.onParticipantJoined(user);
+                                }
+                            }
+                        }
+
+                        // Detect left participants
+                        List<String> leftUsers = new ArrayList<>(connectedUsers);
+                        leftUsers.removeAll(newUsers);
+                        for (String user : leftUsers) {
+                            connectedUsers.remove(user);
+                            if (callback != null) {
+                                callback.onParticipantLeft(user);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        Log.e(TAG, "Database error: " + error.getMessage());
+                    }
+                });
+
+        // Listen for new photos
+        database.getReference("sessions/" + sessionCode + "/photos")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (callback != null && snapshot.getChildrenCount() > 0) {
+                            callback.onPhotoReceived("Participant");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        Log.e(TAG, "Database error: " + error.getMessage());
+                    }
+                });
+    }
+
+    public void sharePhoto() {
+        String photoId = System.currentTimeMillis() + "";
+        database.getReference("sessions/" + sessionCode + "/photos/" + photoId)
+                .setValue(userId);
+        Log.d(TAG, "Photo shared: " + photoId);
+    }
+
+    public void endSession() {
+        database.getReference("sessions/" + sessionCode).removeValue();
+        Log.d(TAG, "Session ended");
+    }
+
+    public int getParticipantCount() {
+        return connectedUsers.size() + 1; // +1 for current user
+    }
+}

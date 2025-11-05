@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_main">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="20dp"
+        android:background="@color/bg_light"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Back"
+            android:backgroundTint="@color/btn_brown"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📷 Photo Gallery"
+            android:textSize="24sp"
+            android:textColor="@color/text_dark"
+            android:textStyle="bold"
+            android:fontFamily="serif" />
+
+        <Button
+            android:id="@+id/clear_gallery_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🗑️ Clear"
+            android:backgroundTint="@color/error_red"
+            android:textColor="@color/white"
+            android:padding="12dp" />
+    </LinearLayout>
+
+    <!-- Content Area -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- Gallery RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/gallery_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:clipToPadding="false" />
+
+        <!-- Empty State -->
+        <TextView
+            android:id="@+id/empty_gallery_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="📸 No photos yet!\n\nStart taking some vintage photos to see them here."
+            android:textSize="18sp"
+            android:textColor="@color/text_brown"
+            android:textAlignment="center"
+            android:fontFamily="serif"
+            android:lineSpacingExtra="4dp"
+            android:padding="40dp"
+            android:visibility="gone" />
+
+        <!-- Loading Indicator -->
+        <ProgressBar
+            android:id="@+id/loading_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <!-- Footer -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="✨ Your vintage memories ✨"
+        android:textSize="14sp"
+        android:textColor="@color/text_gold"
+        android:textStyle="italic"
+        android:fontFamily="serif"
+        android:textAlignment="center"
+        android:padding="15dp"
+        android:background="@color/bg_light" />
+
+</LinearLayout>

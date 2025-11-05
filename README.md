@@ -21,8 +21,8 @@ SnapBook is an Android app that beautifully blends vintage photography with digi
 
 ## Built With:
 
-Android Studio (Java)
-CameraX API for camera control
-SQLite for local storage
-Glide for image loading
-Firebase (authentication integration)
+- Android Studio (Java)
+- CameraX API for camera control
+- SQLite for local storage
+- Glide for image loading
+- Firebase (authentication integration)
